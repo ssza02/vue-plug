@@ -5,7 +5,12 @@
         <button type="button" @click="clickHandler">修改自己文本</button>
         <button type="button" @click="clickHandler2">修改子组件文本</button>
         <div>Test: {{msg}}</div>
-        <child></child>
+        <br/>
+        <div>子组件传值: {{parentMsg}}</div>
+        <button type="button" @click="changeChild">父组件改变子组件数据</button>
+        <child ref="childModule" @showbox="toshow" :parentMsg="parentMsg"></child> //监听子组件触发的showbox事件,然后调用toshow方法
+        <br/>
+        
     </div>
 </template>
 
@@ -15,7 +20,8 @@ import Child from '../vuexChild/index.vue'
 export default {
     data() {
       return {
-        obj:{}
+        obj:{},
+        parentMsg:'未更改'
       };
   },
   name: 'Parent',
@@ -42,7 +48,13 @@ export default {
               },
       clickHandler2(){
           store.commit('changeChildText', '父组件修改子组件后的文本')
-              }
+              },
+      toshow(msg) {
+        this.parentMsg = msg;
+    },
+    changeChild(){
+        this.$refs.childModule.heiheihei("嘿嘿嘿");
+    }
   },
   mounted: function(){
     console.log('sidebar routes: ', this.routes)

@@ -132,7 +132,7 @@ export default new Router({
                             component: SecendLevel,
                             children: [
                                 { path: 'set', name: '$set', component: SetDate, },
-                                { path: 'vuex', name: 'vuex', component: Vuex, },
+                                { path: 'vuex', name: 'vuex,props,$emit', component: Vuex, },
                                 { path: 'echars', name: 'Echars', component: Echars, },
                             ]
                         },

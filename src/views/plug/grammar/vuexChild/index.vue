@@ -5,6 +5,8 @@
         <div>childText: {{msg}}</div>
         <button type="button" @click="clickHandler">修改父组件文本</button>
         <button type="button" @click="clickHandler2">修改自己文本</button>
+        <br/>
+        <button type="button" @click="open">子组件传值</button>
     </div>
 </template>
 
@@ -17,9 +19,7 @@ export default {
       };
   },
   name: 'Child',
-  props: {
-
-  },
+  props: ['parentMsg'],
   computed: {
     // 默认激活的路由, 用来激活菜单选中状态
     msg(){
@@ -37,7 +37,13 @@ export default {
             },
       clickHandler2(){
                 store.commit("changeChildText", "子组件修改自己后的文本");
-            }
+            },
+      open() {
+        this.$emit('showbox','the msg'); //触发showbox方法，'the msg'为向父组件传递的数据
+    },
+    heiheihei(str){
+        alert(str);
+    }
   },
   mounted: function(){
     console.log('sidebar routes: ', this.routes)
