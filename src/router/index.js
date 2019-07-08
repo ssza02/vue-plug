@@ -58,6 +58,8 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(vueResource)
     // Vue.use(axios)
 
+
+
 export default new Router({
     mode: 'history',
     routes: [{
